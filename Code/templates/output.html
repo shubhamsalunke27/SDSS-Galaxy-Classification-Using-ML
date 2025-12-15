@@ -1,0 +1,252 @@
+{% extends "base.html" %}
+
+{% block title %}Classification Result | SDSS{% endblock %}
+
+{% block extra_css %}
+<style>
+    .result-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 60vh;
+        padding: 2rem;
+    }
+
+    .result-card {
+        background: white;
+        border-radius: 15px;
+        padding: 3rem;
+        max-width: 600px;
+        width: 100%;
+        box-shadow: 0 8px 32px rgba(15, 52, 96, 0.15);
+        border-top: 4px solid #00d4ff;
+    }
+
+    .result-card.success {
+        border-top-color: #00d4ff;
+    }
+
+    .result-card.error {
+        border-top-color: #ff4757;
+    }
+
+    .result-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .result-icon.success {
+        color: #00d4ff;
+    }
+
+    .result-icon.error {
+        color: #ff4757;
+    }
+
+    .result-title {
+        font-size: 2rem;
+        color: #0f3460;
+        margin-bottom: 1rem;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    .result-subtitle {
+        font-size: 1.3rem;
+        color: #667eea;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+    }
+
+    .confidence-section {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin: 1.5rem 0;
+        border-left: 4px solid #667eea;
+    }
+
+    .confidence-label {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+
+    .confidence-value {
+        font-size: 1.8rem;
+        color: #667eea;
+        font-weight: 700;
+    }
+
+    .confidence-bar {
+        width: 100%;
+        height: 8px;
+        background: #e0e0e0;
+        border-radius: 4px;
+        margin-top: 1rem;
+        overflow: hidden;
+    }
+
+    .confidence-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        border-radius: 4px;
+        transition: width 0.5s ease;
+    }
+
+    .error-message {
+        background: #ffe5e5;
+        color: #ff4757;
+        padding: 1.5rem;
+        border-radius: 10px;
+        border-left: 4px solid #ff4757;
+        margin: 1.5rem 0;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+        justify-content: center;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.9rem 1.8rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+    }
+
+    .btn-secondary {
+        background: #f0f0f0;
+        color: #0f3460;
+        border: 2px solid #e0e0e0;
+    }
+
+    .btn-secondary:hover {
+        background: #e8e8e8;
+        border-color: #00d4ff;
+    }
+
+    .classification-badge {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background: linear-gradient(135deg, #00d4ff 0%, #0084ff 100%);
+        color: white;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-top: 1rem;
+    }
+
+    @media (max-width: 600px) {
+        .result-card {
+            padding: 2rem;
+        }
+
+        .result-title {
+            font-size: 1.5rem;
+        }
+
+        .result-subtitle {
+            font-size: 1.1rem;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+        }
+
+        .btn {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="result-container">
+    {% if error %}
+        <div class="result-card error">
+            <div class="result-icon error">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <h1 class="result-title">Classification Error</h1>
+            <div class="error-message">
+                <strong>Error:</strong> {{ message }}
+            </div>
+            <div class="action-buttons">
+                <a href="/predict" class="btn btn-primary">
+                    <i class="fas fa-arrow-left"></i>
+                    Try Again
+                </a>
+                <a href="/" class="btn btn-secondary">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+            </div>
+        </div>
+    {% else %}
+        <div class="result-card success">
+            <div class="result-icon success">
+                <i class="fas fa-star"></i>
+            </div>
+            <h1 class="result-title">Classification Result</h1>
+            <div class="result-subtitle">
+                {{ prediction }}
+            </div>
+
+            {% if prediction == 'STARFORMING' %}
+                <p style="text-align: center; color: #666; font-size: 0.95rem;">
+                    This galaxy is actively forming new stars and has ongoing star formation activities.
+                </p>
+            {% elif prediction == 'STARBURST' %}
+                <p style="text-align: center; color: #666; font-size: 0.95rem;">
+                    This galaxy is experiencing intense star formation in a short period (starburst event).
+                </p>
+            {% endif %}
+
+            {% if probability %}
+                <div class="confidence-section">
+                    <div class="confidence-label">Model Confidence</div>
+                    <div class="confidence-value">{{ (probability * 100) | round(1) }}%</div>
+                    <div class="confidence-bar">
+                        <div class="confidence-fill" style="width: {{ (probability * 100) }}%"></div>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="action-buttons">
+                <a href="/predict" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                    Classify Another Galaxy
+                </a>
+                <a href="/" class="btn btn-secondary">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

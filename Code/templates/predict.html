@@ -1,0 +1,360 @@
+{% extends "base.html" %}
+
+{% block title %}Galaxy Prediction | SDSS{% endblock %}
+
+{% block extra_css %}
+<style>
+    .prediction-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .prediction-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 3rem 2rem;
+        border-radius: 15px;
+        text-align: center;
+        margin-bottom: 3rem;
+        box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2);
+    }
+
+    .prediction-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .prediction-header p {
+        font-size: 1.1rem;
+        opacity: 0.95;
+    }
+
+    .prediction-section {
+        background: white;
+        border-radius: 15px;
+        padding: 3rem;
+        box-shadow: 0 8px 32px rgba(15, 52, 96, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        font-weight: 600;
+        margin-bottom: 0.6rem;
+        color: #1a1a3e;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .form-group label .feature-code {
+        background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 132, 255, 0.1));
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        color: #0084ff;
+        font-weight: 700;
+        font-family: 'Courier New', monospace;
+    }
+
+    .form-group input {
+        padding: 1rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: #f8f9fa;
+    }
+
+    .form-group input:focus {
+        outline: none;
+        border-color: #00d4ff;
+        background: white;
+        box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
+    }
+
+    .form-group input::placeholder {
+        color: #999;
+    }
+
+    .submit-btn {
+        grid-column: 1 / -1;
+        padding: 1.2rem 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        min-height: 55px;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    .submit-btn:active {
+        transform: translateY(0);
+    }
+
+    .submit-btn i {
+        font-size: 1.2rem;
+    }
+
+    .info-section {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+        padding: 2rem;
+        border-radius: 12px;
+        border-left: 4px solid #667eea;
+        margin-top: 2rem;
+    }
+
+    .info-title {
+        font-size: 1.2rem;
+        color: #1a1a3e;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    .info-title i {
+        color: #00d4ff;
+        font-size: 1.3rem;
+    }
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .feature-guide {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        border-left: 3px solid #667eea;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .feature-name {
+        font-weight: 600;
+        color: #667eea;
+        margin-bottom: 0.5rem;
+        font-family: 'Courier New', monospace;
+    }
+
+    .feature-description {
+        color: #555;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 0.8rem;
+    }
+
+    .feature-example {
+        background: #f8f9fa;
+        padding: 0.8rem;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        color: #555;
+        font-family: 'Courier New', monospace;
+        border-left: 2px solid #00d4ff;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1.6rem;
+        background: #f8f9fa;
+        color: #1a1a3e;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+        background: #e0e0e0;
+        border-color: #00d4ff;
+        color: #00d4ff;
+    }
+
+    .nav-btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+    }
+
+    .nav-btn-primary:hover {
+        background: linear-gradient(135deg, #5568d3 0%, #6b4291 100%);
+    }
+
+    @media (max-width: 768px) {
+        .prediction-header h1 {
+            font-size: 1.8rem;
+        }
+
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+            flex-direction: column;
+        }
+
+        .nav-btn {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="prediction-container">
+    <div class="prediction-header">
+        <h1><i class="fas fa-star"></i> Galaxy Classification Predictor</h1>
+        <p>Enter galaxy parameters to receive instant classification predictions</p>
+    </div>
+
+    <div class="prediction-section">
+        <form method="POST" action="/submit">
+            <div class="form-grid">
+                {% for feature_name in feature_names %}
+                    <div class="form-group">
+                        <label for="{{ feature_name }}">
+                            {{ feature_name | replace('_', ' ') | title }}
+                            <span class="feature-code">{{ feature_name }}</span>
+                        </label>
+                        <input 
+                            type="number" 
+                            id="{{ feature_name }}" 
+                            name="{{ feature_name }}" 
+                            placeholder="Enter numerical value" 
+                            step="0.01"
+                            required
+                        >
+                    </div>
+                {% endfor %}
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-search-plus"></i>
+                    Classify Galaxy
+                </button>
+            </div>
+        </form>
+
+        <div class="info-section">
+            <div class="info-title">
+                <i class="fas fa-lightbulb"></i>
+                Need Help With Input Values?
+            </div>
+            <p style="color: #555; margin-bottom: 1rem;">
+                All features should be numerical values from actual SDSS measurements. Here's a guide for each input:
+            </p>
+            <div class="feature-grid">
+                <div class="feature-guide">
+                    <div class="feature-name">specobjid</div>
+                    <div class="feature-description">Spectroscopic Object ID - unique identifier for the galaxy</div>
+                    <div class="feature-example">Example: 1000000</div>
+                </div>
+
+                <div class="feature-guide">
+                    <div class="feature-name">u</div>
+                    <div class="feature-description">Magnitude in ultraviolet u-band (brightness measurement)</div>
+                    <div class="feature-example">Example: 18.5</div>
+                </div>
+
+                <div class="feature-guide">
+                    <div class="feature-name">modelFlux_i</div>
+                    <div class="feature-description">Model flux in i-band (near-infrared light intensity)</div>
+                    <div class="feature-example">Example: 2500</div>
+                </div>
+
+                <div class="feature-guide">
+                    <div class="feature-name">modelFlux_z</div>
+                    <div class="feature-description">Model flux in z-band (infrared light intensity)</div>
+                    <div class="feature-example">Example: 1800</div>
+                </div>
+
+                <div class="feature-guide">
+                    <div class="feature-name">petroRad_u</div>
+                    <div class="feature-description">Petrosian radius in u-band (physical size in u-band)</div>
+                    <div class="feature-example">Example: 3.2</div>
+                </div>
+
+                <div class="feature-guide">
+                    <div class="feature-name">petroRad_g</div>
+                    <div class="feature-description">Petrosian radius in g-band (physical size in g-band)</div>
+                    <div class="feature-example">Example: 3.5</div>
+                </div>
+
+                <div class="feature-guide">
+                    <div class="feature-name">petroRad_i</div>
+                    <div class="feature-description">Petrosian radius in i-band (physical size in i-band)</div>
+                    <div class="feature-example">Example: 3.8</div>
+                </div>
+
+                <div class="feature-guide">
+                    <div class="feature-name">petroRad_r</div>
+                    <div class="feature-description">Petrosian radius in r-band (physical size in r-band)</div>
+                    <div class="feature-example">Example: 3.6</div>
+                </div>
+
+                <div class="feature-guide">
+                    <div class="feature-name">petroRad_z</div>
+                    <div class="feature-description">Petrosian radius in z-band (physical size in z-band)</div>
+                    <div class="feature-example">Example: 3.4</div>
+                </div>
+
+                <div class="feature-guide">
+                    <div class="feature-name">redshift</div>
+                    <div class="feature-description">Redshift value (indicates distance and age of galaxy)</div>
+                    <div class="feature-example">Example: 0.05</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-links">
+            <a href="/" class="nav-btn">
+                <i class="fas fa-home"></i>
+                Home
+            </a>
+            <a href="/about" class="nav-btn">
+                <i class="fas fa-info-circle"></i>
+                About
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

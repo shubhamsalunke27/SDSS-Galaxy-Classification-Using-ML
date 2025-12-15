@@ -1,0 +1,380 @@
+{% extends "base.html" %}
+
+{% block title %}About | SDSS Galaxy Classification{% endblock %}
+
+{% block extra_css %}
+<style>
+    .about-section {
+        background: white;
+        border-radius: 15px;
+        padding: 3rem;
+        box-shadow: 0 8px 32px rgba(15, 52, 96, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        color: #0f3460;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        border-bottom: 3px solid #667eea;
+        padding-bottom: 1rem;
+    }
+
+    .section-title i {
+        color: #667eea;
+    }
+
+    .about-content h2 {
+        font-size: 1.8rem;
+        color: #0f3460;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    .about-content h2 i {
+        color: #00d4ff;
+        font-size: 1.5rem;
+    }
+
+    .about-content p {
+        color: #555;
+        line-height: 1.8;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+
+    .feature-item {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+        padding: 2rem;
+        border-radius: 10px;
+        border-left: 4px solid #667eea;
+    }
+
+    .feature-item h3 {
+        color: #0f3460;
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .feature-item h3 i {
+        color: #667eea;
+    }
+
+    .feature-item p {
+        color: #666;
+        font-size: 0.95rem;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .stat-box {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.95rem;
+        opacity: 0.95;
+    }
+
+    .tech-stack {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+        padding: 2rem;
+        border-radius: 10px;
+        border-left: 4px solid #667eea;
+        margin: 2rem 0;
+    }
+
+    .tech-stack h3 {
+        color: #0f3460;
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+
+    .tech-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .tech-item {
+        background: white;
+        padding: 1rem;
+        border-radius: 6px;
+        border-left: 3px solid #667eea;
+        font-size: 0.95rem;
+        color: #555;
+    }
+
+    .tech-item strong {
+        color: #0f3460;
+    }
+
+    .cta-section {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 3rem;
+        border-radius: 15px;
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .cta-section h2 {
+        color: white;
+        margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+        color: rgba(255, 255, 255, 0.95);
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: rgba(255, 255, 255, 0.2);
+        border: 2px solid white;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .cta-btn:hover {
+        background: white;
+        color: #0084ff;
+    }
+
+    @media (max-width: 768px) {
+        .about-section {
+            padding: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+        }
+
+        .about-content h2 {
+            font-size: 1.3rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="about-section">
+    <h1 class="section-title">
+        <i class="fas fa-info-circle"></i>
+        About This Project
+    </h1>
+
+    <div class="about-content">
+        <p>
+            The <strong>SDSS Galaxy Classification System</strong> is an advanced machine learning application designed to classify galaxies from the Sloan Digital Sky Survey (SDSS) into two distinct categories: <strong>STARFORMING</strong> and <strong>STARBURST</strong> galaxies.
+        </p>
+
+        <h2>
+            <i class="fas fa-microscope"></i>
+            Project Overview
+        </h2>
+        <p>
+            This project leverages astronomical data from one of the most comprehensive sky surveys ever conducted. The SDSS DR18 dataset contains measurements of over 100,000 galaxies, including their magnitudes, fluxes, physical sizes, and redshift values. Our machine learning model has been trained to identify patterns that distinguish actively star-forming galaxies from those experiencing intense starburst events.
+        </p>
+
+        <h2>
+            <i class="fas fa-brain"></i>
+            The Science Behind It
+        </h2>
+        <p>
+            <strong>STARFORMING galaxies</strong> have a normal, sustained rate of star formation. They continuously produce new stars at a relatively constant pace over billions of years.
+        </p>
+        <p>
+            <strong>STARBURST galaxies</strong> are undergoing rapid, intense periods of star formation, often triggered by galactic collisions or interactions. These events create massive numbers of new stars in a relatively short time span.
+        </p>
+
+        <h2>
+            <i class="fas fa-database"></i>
+            Dataset Information
+        </h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h3><i class="fas fa-star"></i>Data Source</h3>
+                <p>Sloan Digital Sky Survey (SDSS DR18) - One of the largest astronomical databases</p>
+            </div>
+            <div class="feature-item">
+                <h3><i class="fas fa-chart-bar"></i>Sample Size</h3>
+                <p>100,000+ galaxies with complete astronomical measurements</p>
+            </div>
+            <div class="feature-item">
+                <h3><i class="fas fa-ruler"></i>Features</h3>
+                <p>10 carefully selected astronomical parameters for classification</p>
+            </div>
+            <div class="feature-item">
+                <h3><i class="fas fa-balance-scale"></i>Class Balance</h3>
+                <p>SMOTE technique applied for balanced training data</p>
+            </div>
+        </div>
+
+        <h2>
+            <i class="fas fa-cogs"></i>
+            Model Architecture
+        </h2>
+        <p>
+            Our classification system uses a <strong>Random Forest Classifier</strong> with 100 decision trees. This ensemble method combines multiple decision trees to make robust predictions with high accuracy. The model was trained on a balanced dataset using cross-validation techniques to ensure generalization.
+        </p>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">100</div>
+                <div class="stat-label">Decision Trees</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Input Features</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Output Classes</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">80k+</div>
+                <div class="stat-label">Training Samples</div>
+            </div>
+        </div>
+
+        <h2>
+            <i class="fas fa-list"></i>
+            Input Features
+        </h2>
+        <p>
+            The classifier uses 10 astronomical parameters derived from SDSS measurements:
+        </p>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h3>Magnitudes (u, g, r, i, z)</h3>
+                <p>Brightness measurements in different wavelength bands representing the galaxy's spectral energy distribution</p>
+            </div>
+            <div class="feature-item">
+                <h3>Model Fluxes</h3>
+                <p>Light intensity measurements in specific bands (i-band and z-band) used for stellar mass estimation</p>
+            </div>
+            <div class="feature-item">
+                <h3>Petrosian Radii</h3>
+                <p>Physical size measurements of galaxies in multiple bands, important for morphological classification</p>
+            </div>
+            <div class="feature-item">
+                <h3>Redshift (z)</h3>
+                <p>Measure of how far the galaxy is from Earth, related to its age and distance</p>
+            </div>
+        </div>
+
+        <h2>
+            <i class="fas fa-tools"></i>
+            Technology Stack
+        </h2>
+        <div class="tech-stack">
+            <h3>Technologies & Libraries</h3>
+            <div class="tech-list">
+                <div class="tech-item">
+                    <strong>Python 3.x</strong> - Core programming language
+                </div>
+                <div class="tech-item">
+                    <strong>Flask</strong> - Web framework for the application
+                </div>
+                <div class="tech-item">
+                    <strong>Scikit-learn</strong> - Machine learning library
+                </div>
+                <div class="tech-item">
+                    <strong>Pandas</strong> - Data manipulation and analysis
+                </div>
+                <div class="tech-item">
+                    <strong>NumPy</strong> - Numerical computing
+                </div>
+                <div class="tech-item">
+                    <strong>HTML5/CSS3</strong> - Frontend technologies
+                </div>
+            </div>
+        </div>
+
+        <h2>
+            <i class="fas fa-arrow-right"></i>
+            How to Use
+        </h2>
+        <p>
+            Using our classifier is simple:
+        </p>
+        <ol style="color: #555; line-height: 1.8; font-size: 1rem; margin-left: 2rem;">
+            <li>Navigate to the <strong>Classification</strong> page</li>
+            <li>Enter the 10 astronomical parameters for your galaxy</li>
+            <li>Click the <strong>"Classify Galaxy"</strong> button</li>
+            <li>Receive instant classification with confidence probability</li>
+        </ol>
+
+        <h2>
+            <i class="fas fa-chart-line"></i>
+            Performance Metrics
+        </h2>
+        <p>
+            The model has been evaluated using multiple metrics:
+        </p>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h3><i class="fas fa-percent"></i>Accuracy</h3>
+                <p>Measures overall correctness of predictions</p>
+            </div>
+            <div class="feature-item">
+                <h3><i class="fas fa-target"></i>Precision</h3>
+                <p>Measures false positive rate</p>
+            </div>
+            <div class="feature-item">
+                <h3><i class="fas fa-crosshairs"></i>Recall</h3>
+                <p>Measures false negative rate</p>
+            </div>
+            <div class="feature-item">
+                <h3><i class="fas fa-equals"></i>F1-Score</h3>
+                <p>Harmonic mean of precision and recall</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <h2><i class="fas fa-rocket"></i> Ready to Classify?</h2>
+        <p>Start classifying galaxies using our machine learning model powered by SDSS data.</p>
+        <a href="/" class="cta-btn">
+            <i class="fas fa-star"></i> Go to Classifier
+        </a>
+    </div>
+</div>
+{% endblock %}
