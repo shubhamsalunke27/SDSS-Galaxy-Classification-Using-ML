@@ -230,7 +230,7 @@ Tasks performed:
 
 <div align="center">
 
-<img src="Output/op.png" alt="Homepage" width="100%">
+<img src="Output/OP.png" alt="Homepage" width="100%">
 
 </div>
 
@@ -239,7 +239,7 @@ Tasks performed:
 
 <div align="center">
 
-<img src="Output/op4.png" alt="Homepage" width="100%">
+<img src="Output/OP6.png" alt="Homepage" width="100%">
 
 </div>
 
