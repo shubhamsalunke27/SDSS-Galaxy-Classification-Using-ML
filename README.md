@@ -1,128 +1,318 @@
+# 🌌 SDSS Galaxy Classification Using Machine Learning
 
-# SDSS Galaxy Classification Using Machine Learning
+<div align="center">
 
-## Project Overview
-This project focuses on the **automated classification of galaxies** from the Sloan Digital Sky Survey (SDSS) dataset using **Machine Learning techniques**. The main goal is to classify galaxies into categories such as **Elliptical, Spiral, and Irregular** based on photometric and spectral features.  
+![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python)
+![Machine Learning](https://img.shields.io/badge/Machine-Learning-orange?style=for-the-badge)
+![Scikit Learn](https://img.shields.io/badge/Scikit--Learn-ML-yellow?style=for-the-badge&logo=scikitlearn)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-black?style=for-the-badge&logo=pandas)
+![NumPy](https://img.shields.io/badge/NumPy-Scientific%20Computing-blue?style=for-the-badge&logo=numpy)
+![Matplotlib](https://img.shields.io/badge/Visualization-Matplotlib-green?style=for-the-badge)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange?style=for-the-badge&logo=jupyter)
+![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
 
-By automating galaxy classification, the system reduces manual effort for astronomers and provides a scalable and accurate solution for large datasets.
+### 🚀 Automated Galaxy Classification Using Machine Learning & SDSS Astronomical Data
+
+*A Machine Learning project focused on classifying galaxies into Elliptical, Spiral, and Irregular categories using data from the Sloan Digital Sky Survey (SDSS).*
+
+</div>
 
 ---
 
-## Project Features
-- Automated galaxy classification using Machine Learning models.  
-- Comparative analysis of **Logistic Regression, Random Forest, and SVM** algorithms.  
-- Preprocessing and exploratory data analysis (EDA) to enhance model performance.  
-- Model deployment with a simple user interface for predictions on new data.  
-- Generation of evaluation metrics including **accuracy, precision, recall, F1-score, and confusion matrix**.
+# 📌 Project Overview
+
+The **SDSS Galaxy Classification Using Machine Learning** project focuses on the automated classification of galaxies using astronomical data from the **Sloan Digital Sky Survey (SDSS)**.
+
+The system leverages Machine Learning algorithms to classify galaxies into categories such as:
+
+- 🌌 Elliptical Galaxies
+- 🌌 Spiral Galaxies
+- 🌌 Irregular Galaxies
+
+By automating the classification process, this project significantly reduces manual effort for astronomers while improving scalability, efficiency, and prediction accuracy for large astronomical datasets.
 
 ---
 
-## Project Structure
+# ✨ Key Features
 
-```
+## 🔭 Automated Galaxy Classification
 
+- Predict galaxy categories using Machine Learning models
+- Fast and scalable prediction system
+- Handles large astronomical datasets efficiently
+
+---
+
+## 📊 Comparative Machine Learning Analysis
+
+Implemented and compared multiple algorithms:
+
+- Logistic Regression
+- Random Forest Classifier
+- Support Vector Machine (SVM)
+
+---
+
+## 📈 Exploratory Data Analysis (EDA)
+
+- Feature distribution analysis
+- Correlation analysis
+- Data visualization
+- Data preprocessing & normalization
+
+---
+
+## 🧠 Model Evaluation
+
+Generated evaluation metrics including:
+
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- Confusion Matrix
+
+---
+
+## 🚀 Model Deployment
+
+- Trained model saved using `.pkl`
+- Prediction-ready deployment notebook
+- User-friendly prediction workflow
+
+---
+
+# 🏗️ Project Structure
+
+```bash
 SDSS-Galaxy-Classification-Using-ML/
 │
-├─ Code/
-│   ├─ data_preprocessing.ipynb
-│   ├─ model_training.ipynb
-│   ├─ model_deployment.ipynb
-│   └─ utils.py (optional)
+├── Code/
+│   ├── data_preprocessing.ipynb
+│   ├── model_training.ipynb
+│   ├── model_deployment.ipynb
+│   └── utils.py
 │
-├─ Data/
-│   └─ SDSS_dataset.csv (or provide link if dataset is too large)
+├── Data/
+│   └── SDSS_dataset.csv
 │
-├─ Output/
-│   ├─ trained_model.pkl
-│   ├─ performance_metrics.csv
-│   └─ screenshots/ (EDA plots, confusion matrix, graphs)
+├── Output/
+│   ├── trained_model.pkl
+│   ├── performance_metrics.csv
+│   └── screenshots/
 │
-├─ Demo_Video/
-│   └─ Galaxy_Classification_Demo.mp4
+├── Demo_Video/
+│   └── Galaxy_Classification_Demo.mp4
 │
-├─ Report/
-│   └─ Internship_Project_Documentation.pdf
+├── Report/
+│   └── Internship_Project_Documentation.pdf
 │
-├─ requirements.txt
-└─ README.md
-
-````
+├── requirements.txt
+└── README.md
+```
 
 ---
 
-## How to Run
+# 🧠 Tech Stack
 
-1. **Clone the repository**:
+| Technology | Purpose |
+|------------|---------|
+| Python | Core Programming Language |
+| NumPy | Numerical Computing |
+| Pandas | Data Manipulation |
+| Matplotlib | Data Visualization |
+| Seaborn | Statistical Visualization |
+| Scikit-learn | Machine Learning Algorithms |
+| Jupyter Notebook | Development & Experimentation |
+| Git & GitHub | Version Control |
+
+---
+
+# ⚙️ Installation & Setup
+
+## 1️⃣ Clone Repository
+
 ```bash
-git clone https://github.com/YourUsername/SDSS-Galaxy-Classification-Using-ML.git
-````
+git clone https://github.com/shubhamsalunke27/SDSS-Galaxy-Classification-Using-ML.git
+```
 
-2. **Install required libraries**:
+---
+
+## 2️⃣ Navigate to Project Directory
+
+```bash
+cd SDSS-Galaxy-Classification-Using-ML
+```
+
+---
+
+## 3️⃣ Install Required Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. **Run Jupyter Notebooks in order**:
+---
 
-   * `data_preprocessing.ipynb` – Data cleaning, normalization, and preparation.
-   * `model_training.ipynb` – Train models, tune hyperparameters, evaluate performance.
-   * `model_deployment.ipynb` – Load trained model and make predictions.
+# 🚀 Running the Project
 
-4. **Use trained model** (`trained_model.pkl`) to classify new galaxy data.
+## Step 1 – Data Preprocessing
+
+Run:
+
+```bash
+data_preprocessing.ipynb
+```
+
+Tasks performed:
+- Data Cleaning
+- Feature Scaling
+- Handling Missing Values
+- Normalization
 
 ---
 
-## Key Libraries & Tools
+## Step 2 – Model Training
 
-* **Python** – Main programming language
-* **NumPy & Pandas** – Data manipulation and analysis
-* **Matplotlib & Seaborn** – Data visualization
-* **Scikit-learn** – Machine learning algorithms and evaluation
-* **Jupyter Notebook** – Development and demonstration
-* **GitHub** – Version control
+Run:
 
----
+```bash
+model_training.ipynb
+```
 
-## Results & Performance
-
-* **Random Forest Classifier** achieved **92% accuracy** on the test dataset.
-* High precision, recall, and F1-score across all galaxy classes.
-* Confusion matrices and plots validate the model’s reliability.
+Tasks performed:
+- Model Training
+- Hyperparameter Tuning
+- Performance Evaluation
+- Accuracy Comparison
 
 ---
 
-## Demo Video
+## Step 3 – Model Deployment
 
-🎥 [Galaxy Classification Demo Video]([Demo_Video/Galaxy_Classification_Demo.mp4](https://docs.google.com/videos/d/1EWwz7X0Z0VLjrVEmYQk-eqAslxr1zMl5k1bNZFS-r-0/play))
+Run:
 
----
+```bash
+model_deployment.ipynb
+```
 
-## Author
-
-**Shubham Salunke**
-Computer Engineering Student | Machine Learning Enthusiast
-
----
-
-## GitHub Repository Link
-
-[SDSS-Galaxy-Classification-Using-ML]([https://github.com/YourUsername/SDSS-Galaxy-Classification-Using-ML](https://github.com/shubhamsalunke27/SDSS-Galaxy-Classification-Using-ML))
+Tasks performed:
+- Load Trained Model
+- Predict Galaxy Classes
+- Generate Output Predictions
 
 ---
 
-## References
+# 📊 Results & Performance
 
-1. Sloan Digital Sky Survey (SDSS) – [https://www.sdss.org](https://www.sdss.org)
-2. Scikit-learn Documentation – [https://scikit-learn.org](https://scikit-learn.org)
-3. NumPy Documentation – [https://numpy.org](https://numpy.org)
-4. Pandas Documentation – [https://pandas.pydata.org](https://pandas.pydata.org)
-5. Matplotlib Documentation – [https://matplotlib.org](https://matplotlib.org)
-6. Seaborn Documentation – [https://seaborn.pydata.org](https://seaborn.pydata.org)
-7. Research papers on galaxy classification using machine learning
+## ✅ Best Model Performance
+
+| Model | Accuracy |
+|------|----------|
+| Random Forest Classifier | **92%** |
+| Logistic Regression | Competitive |
+| SVM | High Precision |
 
 ---
 
+## 📈 Performance Metrics
+
+- High Precision across galaxy classes
+- Strong Recall & F1-Score
+- Reliable Confusion Matrix Results
+- Robust Prediction Performance
+
+---
+
+# 📸 Output Screenshots
+
+## 📊 EDA Visualizations
+
+> Add EDA plots here
+
+---
+
+## 🧠 Confusion Matrix
+
+> Add confusion matrix screenshot here
+
+---
+
+## 📈 Model Performance Graphs
+
+> Add accuracy comparison graphs here
+
+---
+
+# 🎥 Demo Video
+
+## ▶️ Galaxy Classification Demo
+
+[Watch Demo Video](https://docs.google.com/videos/d/1EWwz7X0Z0VLjrVEmYQk-eqAslxr1zMl5k1bNZFS-r-0/play)
+
+---
+
+# 📚 Learning Outcomes
+
+This project helped in understanding:
+
+- Machine Learning Model Development
+- Astronomical Data Analysis
+- Data Preprocessing Techniques
+- Feature Engineering
+- Model Evaluation Metrics
+- Scientific Visualization
+- End-to-End ML Workflow
+
+---
+
+# 🚀 Future Enhancements
+
+- 🤖 Deep Learning-based Galaxy Classification
+- ☁️ Cloud Model Deployment
+- 📡 Real-Time Astronomical Data Integration
+- 🌐 Web Application for Predictions
+- 📱 Interactive Visualization Dashboard
+- 🔭 Advanced Space Object Detection
+
+---
+
+# 👨‍💻 Author
+
+## Shubham Salunke
+
+### 🚀 Machine Learning & AI Enthusiast
+
+- Passionate about AI-driven scientific applications
+- Interested in Astronomy + Machine Learning
+- Building impactful real-world ML solutions
+
+---
+
+# 🔗 GitHub Repository
+
+## 📂 Repository Link
+
+https://github.com/shubhamsalunke27/SDSS-Galaxy-Classification-Using-ML
+
+---
+
+# 📖 References
+
+1. Sloan Digital Sky Survey (SDSS) – https://www.sdss.org  
+2. Scikit-learn Documentation – https://scikit-learn.org  
+3. NumPy Documentation – https://numpy.org  
+4. Pandas Documentation – https://pandas.pydata.org  
+5. Matplotlib Documentation – https://matplotlib.org  
+6. Seaborn Documentation – https://seaborn.pydata.org  
+7. Research papers on Galaxy Classification using Machine Learning
 
 
 
+<div align="center">
+
+## 🌌 Exploring the Universe Through Machine Learning
+
+Made with ❤️ using Python, Scikit-learn & Astronomical Data
+
+</div>
