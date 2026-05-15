@@ -226,23 +226,24 @@ Tasks performed:
 
 # 📸 Output Screenshots
 
+## 🏠 Homepage
+
+<div align="center">
+
+<img src="output/op.png" alt="Homepage" width="100%">
+
+</div>
+
+---
 ## 📊 EDA Visualizations
 
-> Add EDA plots here
+<div align="center">
 
----
+<img src="output/op4.png" alt="Homepage" width="100%">
 
-## 🧠 Confusion Matrix
+</div>
 
-> Add confusion matrix screenshot here
 
----
-
-## 📈 Model Performance Graphs
-
-> Add accuracy comparison graphs here
-
----
 
 # 🎥 Demo Video
 
